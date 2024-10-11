@@ -1,0 +1,6 @@
+Mon projet consiste à identifier la commande CAN précise qui permet d'ouvrir la porte avant gauche d'une voiture. Pour cela, j'ai utilisé la commande $ candump -l vcan0 pour capturer en direct toutes les données CAN transmises par la voiture dans un fichier log (nommé candump-2024-10-02_160459.log). Pendant l'enregistrement, j'ai ouvert manuellement la porte avant gauche, afin que cette action soit enregistrée dans le fichier.
+
+Le problème est que ce fichier contient des milliers de lignes de commandes CAN, rendant la recherche manuelle imossible à réaliser. J'ai donc écrit un script en Python qui lit et exécute automatiquement chaque ligne du fichier log. Lorsque la bonne commande sera exécutée, la porte avant gauche s'ouvrira, me permettant de l'identifier.
+
+Le script analyse le fichier log et rejoue chaque commande CAN une par une. Une fois la commande correcte trouvée, je pourrai confirmer que c'est bien celle qui déclenche l'ouverture de la porte. Pour me facilité la tâche, j'ai diviser le fichier en plusieur partie et le diviser jusqu'à ce que je trouve la commande CAN que l'on cherche.
+Au final, la commande CAN qui permet d'ouvrir la porte avant gauche est vcan0 19B#00000E000000
